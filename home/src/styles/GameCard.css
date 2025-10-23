@@ -1,0 +1,125 @@
+.game-card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.game-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.game-card-header h3 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #111827;
+}
+
+.game-card-pot {
+  text-align: right;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.game-card-pot strong {
+  display: block;
+  font-size: 1.1rem;
+  color: #0f172a;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.status-0 {
+  background-color: #eff6ff;
+  color: #1d4ed8;
+}
+
+.status-1 {
+  background-color: #fef3c7;
+  color: #d97706;
+}
+
+.status-2 {
+  background-color: #ede9fe;
+  color: #6d28d9;
+}
+
+.status-3 {
+  background-color: #dcfce7;
+  color: #15803d;
+}
+
+.game-card-section h4 {
+  margin: 0 0 0.75rem 0;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.player-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.player-row span:last-child {
+  font-weight: 600;
+  color: #111827;
+}
+
+.game-card-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.game-card-actions button {
+  background-color: #4f46e5;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.game-card-actions button:hover {
+  background-color: #4338ca;
+}
+
+.game-card-actions button:disabled {
+  background-color: #cbd5f5;
+  color: #1e3a8a;
+  cursor: not-allowed;
+}
+
+.no-actions {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .game-card {
+    padding: 1.75rem;
+  }
+}
