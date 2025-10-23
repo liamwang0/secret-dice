@@ -1,6 +1,6 @@
 import { formatEther } from 'viem';
-import type { GameDetails } from '../types/game';
-import { GameStatus, STATUS_LABELS } from '../types/game';
+import type { GameDetails } from '../type/game';
+import { GameStatus, STATUS_LABELS } from '../type/game';
 import '../styles/GameCard.css';
 
 const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';

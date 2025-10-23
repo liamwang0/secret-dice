@@ -6,8 +6,8 @@ import { formatEther } from 'viem';
 import { CONTRACT_ABI, CONTRACT_ADDRESS } from '../config/contracts';
 import { useEthersSigner } from '../hooks/useEthersSigner';
 import { GameCard } from './GameCard';
-import type { GameDetails } from '../types/game';
-import { GameStatus } from '../types/game';
+import type { GameDetails } from '../type/game';
+import { GameStatus } from '../type/game';
 import '../styles/DiceApp.css';
 
 type ProcessingState = {
