@@ -2,11 +2,11 @@
 pragma solidity ^0.8.24;
 
 import {FHE, euint32} from "@fhevm/solidity/lib/FHE.sol";
-import {SepoliaConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
+import {ZamaEthereumConfig} from "@fhevm/solidity/config/ZamaConfig.sol";
 
 /// @title SecretDice
 /// @notice Two-player dice game using Zama FHE-powered randomness
-contract SecretDice is SepoliaConfig {
+contract SecretDice is ZamaEthereumConfig {
     uint256 public constant ENTRY_FEE = 0.0001 ether;
     uint256 public constant REWARD_AMOUNT = ENTRY_FEE * 2;
 
@@ -313,14 +313,15 @@ contract SecretDice is SepoliaConfig {
         handles[0] = FHE.toBytes32(game.encryptedRolls[0]);
         handles[1] = FHE.toBytes32(game.encryptedRolls[1]);
 
-        uint256 requestId = FHE.requestDecryption(handles, this.onDiceDecrypted.selector);
-
+        // uint256 requestId = FHE.requestDecryption(handles, this.onDiceDecrypted.selector);
+        FHE.makePubliclyDecryptable(game.encryptedRolls[0]);
+        FHE.makePubliclyDecryptable(game.encryptedRolls[1]);
         game.status = GameStatus.AwaitingReveal;
         game.decryptionPending = true;
-        game.pendingRequestId = requestId;
-        requestToGame[requestId] = gameId + 1;
+        // game.pendingRequestId = requestId;
+        // requestToGame[requestId] = gameId + 1;
 
-        emit RevealRequested(gameId, requestId);
+        // emit RevealRequested(gameId, requestId);
     }
 
     function onDiceDecrypted(uint256 requestId, bytes memory cleartexts, bytes memory decryptionProof) public returns (bool) {
@@ -338,7 +339,7 @@ contract SecretDice is SepoliaConfig {
             revert UnknownDecryptionRequest();
         }
 
-        FHE.checkSignatures(requestId, cleartexts, decryptionProof);
+        // FHE.checkSignatures(requestId, cleartexts, decryptionProof);
 
         uint32[2] memory results = abi.decode(cleartexts, (uint32[2]));
 
